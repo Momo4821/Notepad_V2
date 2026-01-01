@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notepad_V2", "Notepad_V2.csproj", "{6BC9BC0C-0C19-4023-952E-F4BB41A9638D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BC9BC0C-0C19-4023-952E-F4BB41A9638D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC9BC0C-0C19-4023-952E-F4BB41A9638D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC9BC0C-0C19-4023-952E-F4BB41A9638D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC9BC0C-0C19-4023-952E-F4BB41A9638D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
