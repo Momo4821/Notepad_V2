@@ -12,65 +12,81 @@
     x:CompileBindings="True"
     x:DataType="notepadV2:MainWindow">
 
-
-
-
-  
-    
-    
-    <!--Menu Items-->
+<!--Menu Items-->
     <DockPanel>
      <Menu DockPanel.Dock="Top">   
-      <MenuItem Header="File" >
-      <MenuItem Header="New" x:Name="NewMenuSelection" />
-      <MenuItem Header="New Window"  />
-      <MenuItem Header="Open..." />
-      <MenuItem Header="Save As..." />
+      <MenuItem Header="File" x:Name="Filemenu" >
+      <MenuItem Header="New" x:Name="NewFilemnu"/>
+      <MenuItem Header="New Window" x:Name="NewWindowMenu" />
+      <MenuItem Header="Open..." x:Name="OpenMenu"  />
+      <MenuItem Header="Save As..." x:Name="SaveasMenu"/>
       
-      <MenuItem Header="Print" />
+      <MenuItem Header="Print" x:Name="PrintMenu" />
       <Separator></Separator>
-      <MenuItem Header="Exit"  />
-      </MenuItem>  
+      <MenuItem Header="Exit" x:Name="ExitMenu" />
+      </MenuItem>
          
         
-     <MenuItem Header="_Edit">
-    <MenuItem Header="Undo"/>
-    <MenuItem Header="Cut"/>
-    <MenuItem Header="Copy"/>
-    <MenuItem Header="Paste"/>
-    <MenuItem Header="Delete"/>
+     <MenuItem Header="_Edit" x:Name="EditMenu">
+    <MenuItem Header="Undo" x:Name="UndoMenu"/>
+    <MenuItem Header="Cut" x:Name="CutMenu"/>
+    <MenuItem Header="Copy" x:Name="CopyMenu"/>
+    <MenuItem Header="Paste" x:Name="PasteMenu"/>
+    <MenuItem Header="Delete" x:Name="DeleteMenu"/>
     <Separator></Separator>
-    <MenuItem Header="Find..."/>
-    <MenuItem Header="Find Next"/>
-    <MenuItem Header="Replace..."/>
-    <MenuItem Header="Go To..."/>
+    <MenuItem Header="Find..." x:Name="FindMenu"/>
+    <MenuItem Header="Find Next" x:Name="FindNextMenu"/>
+    <MenuItem Header="Replace..." x:Name="ReplaceMenu"/> 
+    <MenuItem Header="Go To..." x:Name="GoTomenuitem"/>
     <Separator></Separator>
-    <MenuItem Header="Select All"/>
-    <MenuItem Header="Time/Date"/>
+    <MenuItem Header="Select All" x:Name="SelectAllmenuitem"/>
+    <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem"/>
          
      </MenuItem>   
      
-     <MenuItem Header="_Format"> 
-     <MenuItem Header="Word Wrap"/>
-     <MenuItem Header ="Font..."/>
+     <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
+     <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem"/>
+     <MenuItem Header ="Font..." x:Name="FontMenuItem"/>
      <Separator></Separator>
-     <MenuItem Header="Bulletin list"/>
-     <MenuItem Header="Numbered list"/>
+     <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem"/>
+     <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem"/>
      </MenuItem>
     
-     <MenuItem Header="_View">
-     <MenuItem Header ="View Help"/>  
-     <MenuItem Header="About Notepad_V2"/>
-     <MenuItem Header ="Leave a Review"/>
+     <MenuItem Header="_View" x:Name="ViewMenuItem">
+     <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem"/>  
+     <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem"/>
+     <MenuItem Header ="Leave a Review" x:Name="ReviewMenutem"/>
       </MenuItem>   
      
     </Menu>   
+     
       <Line></Line>
-     <TextBox BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
+    
+     <ScrollViewer>
+      <TextBox BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
+     </ScrollViewer>
+
+     <Border VerticalAlignment="Bottom" Background="WhiteSmoke">
+      
+      <TextBlock>
+       Label For files modified without saving.
+     
+       
+       
+       
+      </TextBlock>
+      
+     </Border>
     </DockPanel>
     
+
+
   
     
+    
+    
+  
+   
 </Window>
 
 
