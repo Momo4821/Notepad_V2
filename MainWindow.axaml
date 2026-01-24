@@ -10,16 +10,16 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:CompileBindings="True"
-    x:DataType="notepadV2:MainWindow">
+    x:DataType="notepadV2:Mainwindowviewmodel">
 
 <!--Menu Items-->
     <DockPanel>
      <Menu DockPanel.Dock="Top">   
-      <MenuItem Header="File" x:Name="Filemenu" >
-      <MenuItem Header="New" x:Name="NewFilemnu"/>
-      <MenuItem Header="New Window" x:Name="NewWindowMenu" />
-      <MenuItem Header="Open..." x:Name="OpenMenu"  />
-      <MenuItem Header="Save As..." x:Name="SaveasMenu"/>
+      <MenuItem Header="File" x:Name="Filemenu"  >
+      <MenuItem Header="New" x:Name="NewFilemnu" Command="{Binding NewFileButtonCommand}"/>
+      <MenuItem Header="New Window" x:Name="NewWindowMenu"/>
+      <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
+      <MenuItem Header="Save As..." x:Name="SaveasMenu" />
       
       <MenuItem Header="Print" x:Name="PrintMenu" />
       <Separator></Separator>
