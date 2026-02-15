@@ -13,20 +13,22 @@
     x:DataType="notepadV2:Mainwindowviewmodel">
 
 <!--Menu Items-->
+<!-- Filemenu View Model -->
     <DockPanel>
      <Menu DockPanel.Dock="Top">   
       <MenuItem Header="File" x:Name="Filemenu"  >
       <MenuItem Header="New" x:Name="NewFilemnu" Command="{Binding NewFileButtonCommand}"/>
-      <MenuItem Header="New Window" x:Name="NewWindowMenu"/>
+      <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
       <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
-      <MenuItem Header="Save As..." x:Name="SaveasMenu" />
+      <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
       
       <MenuItem Header="Print" x:Name="PrintMenu" />
       <Separator></Separator>
-      <MenuItem Header="Exit" x:Name="ExitMenu" />
+      <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand}" />
       </MenuItem>
          
-        
+      
+      <!-- -->
      <MenuItem Header="_Edit" x:Name="EditMenu">
     <MenuItem Header="Undo" x:Name="UndoMenu"/>
     <MenuItem Header="Cut" x:Name="CutMenu"/>
