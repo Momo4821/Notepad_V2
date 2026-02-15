@@ -3,18 +3,19 @@ using Avalonia.Controls;
 
 namespace Notepad_V2.Views;
 
-public class TextboxModel : Mainwindowviewmodel
+public class TextboxModel
 {
     
- public string textcolor {get;set;}
- public string Initialdirectory {get;set;}
- public TextChangedEventArgs textChangedEventArgs;
- public string textfont {get;set;}
+public string _TextColor { get; set; }
+public string _Textfont { get; set; }
+public string _Textstyle { get; set; }
+
+
+public bool _TextUnderline { get; set;}
+public bool _Textstrikeout { get; set;}
     
-    
- 
-    
-    
+
+
 
     
     

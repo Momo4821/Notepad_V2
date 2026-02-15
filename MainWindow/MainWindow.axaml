@@ -30,8 +30,8 @@
       
       <!-- -->
      <MenuItem Header="_Edit" x:Name="EditMenu">
-    <MenuItem Header="Undo" x:Name="UndoMenu"/>
-    <MenuItem Header="Cut" x:Name="CutMenu"/>
+    <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand}"/>
+    <MenuItem Header="Cut" x:Name="CutMenu" Command=""/>
     <MenuItem Header="Copy" x:Name="CopyMenu"/>
     <MenuItem Header="Paste" x:Name="PasteMenu"/>
     <MenuItem Header="Delete" x:Name="DeleteMenu"/>
@@ -65,7 +65,7 @@
       <Line></Line>
     
      <ScrollViewer>
-      <TextBox BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
+      <TextBox x:Name="MainTextbox" BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
      </ScrollViewer>
 
      <Border VerticalAlignment="Bottom" Background="WhiteSmoke">
