@@ -15,39 +15,45 @@
 <!--Menu Items-->
 <!-- Filemenu View Model -->
     <DockPanel>
-     <Menu DockPanel.Dock="Top">   
-      <MenuItem Header="File" x:Name="Filemenu"  >
-      <MenuItem Header="New" x:Name="NewFilemnu" Command="{Binding NewFileButtonCommand}"/>
-      <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
-      <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
-      <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
-      
-      <MenuItem Header="Print" x:Name="PrintMenu" />
+     <Menu DockPanel.Dock="Top">
+      <Window DataContext="FileMenuViewModel">
+       
+       <MenuItem Header="File" x:Name="Filemenu"  >
+             <MenuItem Header="New" x:Name="NewFilemnu" Command="{Binding NewFileButtonCommand}"/>
+             <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
+             <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
+             <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
+       </MenuItem>
+             
+      </Window>   
+     
+      <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand}" />
       <Separator></Separator>
       <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand}" />
-      </MenuItem>
+      
          
       
       <!-- -->
      <MenuItem Header="_Edit" x:Name="EditMenu">
     <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand}"/>
     <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutmMenuCommand}"/>
-    <MenuItem Header="Copy" x:Name="CopyMenu" {Command="{Binding }"/>
-    <MenuItem Header="Paste" x:Name="PasteMenu"/>
-    <MenuItem Header="Delete" x:Name="DeleteMenu"/>
+    <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand}"/>
+    <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PastmenuCommand}"/>
+    <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand}"/>
+    
     <Separator></Separator>
     <MenuItem Header="Find..." x:Name="FindMenu"/>
-    <MenuItem Header="Find Next" x:Name="FindNextMenu"/>
-    <MenuItem Header="Replace..." x:Name="ReplaceMenu"/> 
-    <MenuItem Header="Go To..." x:Name="GoTomenuitem"/>
+    <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand}"/>
+    <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand}"/> 
+    <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GoTomenuItemCommand}"/>
     <Separator></Separator>
-    <MenuItem Header="Select All" x:Name="SelectAllmenuitem"/>
-    <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem"/>
+    <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand}"/>
+    <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand}"/>
          
      </MenuItem>   
      
      <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
-     <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem"/>
+     <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{}"/>
      <MenuItem Header ="Font..." x:Name="FontMenuItem"/>
      <Separator></Separator>
      <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem"/>

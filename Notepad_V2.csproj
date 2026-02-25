@@ -27,11 +27,10 @@
 
     <ItemGroup>
       <Folder Include="Assets\" />
-      <Folder Include="ViewModels\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="MainWindow\MainWindow.axaml.cs">
+      <Compile Update="Views\MainWindow.axaml.cs">
         <DependentUpon>MainWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
