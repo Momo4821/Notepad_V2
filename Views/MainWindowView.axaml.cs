@@ -10,7 +10,6 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Notepad_V2.ViewModels;
-using Notepad_V2.Views;
 
 namespace Notepad_V2;
 
@@ -20,17 +19,14 @@ public partial class MainWindowView : Window
     {
         InitializeComponent();
         
-        FileMenuViewModel vm = new FileMenuViewModel(); // intialize the FilemenuViewModel?
-        
-        
-        
-        
-     
+        //Delcare each view model when the Main view model is started
+        FileMenuViewModel vm = new FileMenuViewModel(); 
+        EditMenuViewModel vm2 = new EditMenuViewModel();
+        FormatViewModel vm3 = new FormatViewModel();
+        TextBoxViewModel vm4 = new TextBoxViewModel();
+        Viewheaderviewmodel vm5 = new Viewheaderviewmodel();
+
     }
-    
-   
-    
-    
-    }
+}
     
 

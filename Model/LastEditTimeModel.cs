@@ -1,6 +1,6 @@
 using Microsoft.VisualBasic;
 
-namespace Notepad_V2.Views;
+namespace Notepad_V2.Models;
 
 public class LastEditTimeModel
 {

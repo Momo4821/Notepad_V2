@@ -18,7 +18,6 @@
 <!-- Filemenu View Model -->
     <controls:DockPanel>
      <Menu DockPanel.Dock="Top">
-      <Window.DataContext>
        
        <MenuItem Header="File" x:Name="Filemenu"  >
              <MenuItem Header="New" x:Name="NewFilemnu"  Command="{Binding NewFileButtonCommand}"/>
@@ -33,13 +32,12 @@
              
        </MenuItem>
              
-      </Window.DataContext>   
-     
+      
       
       
       
       <!--EditMenuViewModels -->
-      <Window DataContext="EditMenuViewModel">
+   
        <MenuItem Header="_Edit" x:Name="EditMenu">
         <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand}"/>
         <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutmMenuCommand}"/>
@@ -56,15 +54,8 @@
         <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand}"/>
         <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand}"/>
        </MenuItem> 
-      </Window>
      
-      
-      
-      
-      
-      
      <!--FormatViewModel-->
-      <Window DataContext="FormatViewModel">
        <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
         <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcomman}"/>
         <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding openfontmenucommand}"/>
@@ -72,26 +63,17 @@
         <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand}"/>
         <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem"/>
        </MenuItem>
-      </Window>
-
-    
       
       <!--ViewHeaderModel-->
-      <Window.DataContext>
        <MenuItem Header="_View" x:Name="ViewMenuItem">
         <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem"/>  
         <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem"/>
         <MenuItem Header ="Leave a Review" x:Name="ReviewMenutem"/>
        </MenuItem>   
-      </Window.DataContext>
-      
-      
       </Menu>
  
      
       <Line></Line>
-    
-     <Window DataContext=""></Window>
      <ScrollViewer>
       <TextBox x:Name="MainTextbox" DataContext="TextbosxViewmodel.cs"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
      </ScrollViewer>
@@ -103,15 +85,4 @@
       
      </Border>
     </controls:DockPanel>
-    
-
-
-  
-    
-    
-    
-  
-   
 </Window>
-
-

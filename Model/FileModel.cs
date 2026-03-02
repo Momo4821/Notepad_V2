@@ -1,4 +1,5 @@
-namespace Notepad_V2.Views;
+using Microsoft.VisualBasic;
+namespace Notepad_V2.Models;
 
 public class FileModel
 {
@@ -10,8 +11,18 @@ public class FileModel
     public string filepath { get; set; }
     
     public string file {get;set;}
+
     
     
+    
+    //Needto add file is modiifed/text is modieifed 
+    
+    
+    
+    
+
+
+   
     
     
     
