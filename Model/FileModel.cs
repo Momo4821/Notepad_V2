@@ -4,12 +4,14 @@ public class FileModel
 {
     
     
-    public string Filetype { get; set; }
+    public string Filetype { get;}
     public string filename { get; set; }
     
     public string filepath { get; set; }
     
     public string file {get;set;}
+    
+    
     
     
     

@@ -10,24 +10,27 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Notepad_V2.ViewModels;
+using Notepad_V2.Views;
 
 namespace Notepad_V2;
 
-public partial class MainWindow : Window
+public partial class MainWindowView : Window
 {
-    public MainWindow()
+    public MainWindowView()
     {
         InitializeComponent();
-        FileMenuViewModel fileMenuViewModel = new FileMenuViewModel();
-        DataContext = fileMenuViewModel; // Intialize the filemenu view model anytime the main view model is active
-
+        
+        FileMenuViewModel vm = new FileMenuViewModel(); // intialize the FilemenuViewModel?
+        
+        
+        
+        
+     
     }
     
+   
+    
     
     }
     
 
-
-//mvm
-
-//model 

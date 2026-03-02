@@ -1,0 +1,117 @@
+<Window
+    x:Class="Notepad_V2.MainWindowView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:notepadV2="clr-namespace:Notepad_V2"
+    xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+    
+    Title="Notepad_V2"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:CompileBindings="True"
+    x:DataType="notepadV2:MainWindowView">
+
+<!--Menu Items-->
+<!-- Filemenu View Model -->
+    <controls:DockPanel>
+     <Menu DockPanel.Dock="Top">
+      <Window.DataContext>
+       
+       <MenuItem Header="File" x:Name="Filemenu"  >
+             <MenuItem Header="New" x:Name="NewFilemnu"  Command="{Binding NewFileButtonCommand}"/>
+             <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
+             <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
+          
+             
+             <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
+             <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand}" />
+             <Separator></Separator>
+             <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand}" />
+             
+       </MenuItem>
+             
+      </Window.DataContext>   
+     
+      
+      
+      
+      <!--EditMenuViewModels -->
+      <Window DataContext="EditMenuViewModel">
+       <MenuItem Header="_Edit" x:Name="EditMenu">
+        <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand}"/>
+        <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutmMenuCommand}"/>
+        <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand}"/>
+        <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PastmenuCommand}"/>
+        <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand}"/>
+    
+        <Separator></Separator>
+        <MenuItem Header="Find..." x:Name="FindMenu"/>
+        <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand}"/>
+        <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand}"/> 
+        <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GoTomenuItemCommand}"/>
+        <Separator></Separator>
+        <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand}"/>
+        <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand}"/>
+       </MenuItem> 
+      </Window>
+     
+      
+      
+      
+      
+      
+     <!--FormatViewModel-->
+      <Window DataContext="FormatViewModel">
+       <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
+        <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcomman}"/>
+        <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding openfontmenucommand}"/>
+        <Separator></Separator>
+        <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand}"/>
+        <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem"/>
+       </MenuItem>
+      </Window>
+
+    
+      
+      <!--ViewHeaderModel-->
+      <Window.DataContext>
+       <MenuItem Header="_View" x:Name="ViewMenuItem">
+        <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem"/>  
+        <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem"/>
+        <MenuItem Header ="Leave a Review" x:Name="ReviewMenutem"/>
+       </MenuItem>   
+      </Window.DataContext>
+      
+      
+      </Menu>
+ 
+     
+      <Line></Line>
+    
+     <Window DataContext=""></Window>
+     <ScrollViewer>
+      <TextBox x:Name="MainTextbox" DataContext="TextbosxViewmodel.cs"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
+     </ScrollViewer>
+
+     <Border VerticalAlignment="Bottom" Background="WhiteSmoke">
+      
+      <TextBlock x:Name="TextBlockFileLabel">
+       Label For files modified without saving.</TextBlock>
+      
+     </Border>
+    </controls:DockPanel>
+    
+
+
+  
+    
+    
+    
+  
+   
+</Window>
+
+
