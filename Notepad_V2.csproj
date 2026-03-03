@@ -35,10 +35,4 @@
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
-
-    <ItemGroup>
-      <AvaloniaResource Include="Class.axaml">
-        <SubType>Designer</SubType>
-      </AvaloniaResource>
-    </ItemGroup>
 </Project>

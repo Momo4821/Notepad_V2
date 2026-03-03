@@ -26,7 +26,7 @@
           
              
    <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand, DataType=vm:FileMenuViewModel}"  />
-   <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand, DataType=vm:FileMenuViewModel,}" />
+   <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand, DataType=vm:FileMenuViewModel}" />
    <Separator></Separator>
    <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand, DataType=vm:FileMenuViewModel}" />
              
