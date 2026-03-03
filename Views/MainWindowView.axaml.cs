@@ -20,13 +20,11 @@ public partial class MainWindowView : Window
         InitializeComponent();
         
         //Delcare each view model when the Main view model is started
-        FileMenuViewModel vm = new FileMenuViewModel(); 
-        EditMenuViewModel vm2 = new EditMenuViewModel();
-        FormatViewModel vm3 = new FormatViewModel();
-        TextBoxViewModel vm4 = new TextBoxViewModel();
-        Viewheaderviewmodel vm5 = new Viewheaderviewmodel();
+    
 
     }
+
+  
 }
     
 

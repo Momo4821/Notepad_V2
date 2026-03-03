@@ -13,11 +13,13 @@ public string Textstyle { get; set; }
 
 public bool TextUnderline { get; set;}
 public bool Textstrikeout { get; set;}
-
-    
-
+public bool ismodied;
 
 
-    
-    
+
+
+
+
+
+
 }

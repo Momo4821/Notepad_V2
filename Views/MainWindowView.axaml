@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:notepadV2="clr-namespace:Notepad_V2"
     xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
-    
+    xmlns:vm="using:Notepad_V2.ViewModels"
     Title="Notepad_V2"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -16,66 +16,63 @@
 
 <!--Menu Items-->
 <!-- Filemenu View Model -->
-    <controls:DockPanel>
-     <Menu DockPanel.Dock="Top">
+<controls:DockPanel>
+ <Menu DockPanel.Dock="Top">
        
-       <MenuItem Header="File" x:Name="Filemenu"  >
-             <MenuItem Header="New" x:Name="NewFilemnu"  Command="{Binding NewFileButtonCommand}"/>
-             <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
-             <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommnad}"  />
+  <MenuItem Header="File" x:Name="Filemenu"  >
+   <MenuItem Header="New" x:Name="NewFilemnu"  Command="{Binding NewFileButtonCommand, DataType=vm:FileMenuViewModel}"/>
+   <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand, DataType=vm:FileMenuViewModel}"/>
+   <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommand ,DataType=vm:FileMenuViewModel}"  />
           
              
-             <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
-             <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand}" />
-             <Separator></Separator>
-             <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand}" />
+   <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand, DataType=vm:FileMenuViewModel}"  />
+   <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand, DataType=vm:FileMenuViewModel,}" />
+   <Separator></Separator>
+   <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand, DataType=vm:FileMenuViewModel}" />
              
-       </MenuItem>
-             
-      
-      
-      
-      
+  </MenuItem>
+ 
+  
       <!--EditMenuViewModels -->
    
        <MenuItem Header="_Edit" x:Name="EditMenu">
-        <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand}"/>
-        <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutmMenuCommand}"/>
-        <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand}"/>
-        <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PastmenuCommand}"/>
-        <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand}"/>
+        <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand , DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutMenuCommand , DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand , DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PasteMenuCommand, DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand, DataType=vm:EditMenuViewModel}"/>
     
         <Separator></Separator>
         <MenuItem Header="Find..." x:Name="FindMenu"/>
-        <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand}"/>
-        <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand}"/> 
-        <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GoTomenuItemCommand}"/>
+        <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand, DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand, DataType=vm:EditMenuViewModel }"/> 
+        <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GotoMenuCommand , DataType=vm:EditMenuViewModel}"/>
         <Separator></Separator>
-        <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand}"/>
-        <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand}"/>
+        <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand, DataType=vm:EditMenuViewModel}"/>
+        <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand, DataType=vm:EditMenuViewModel }"/>
        </MenuItem> 
      
      <!--FormatViewModel-->
        <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
-        <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcomman}"/>
-        <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding openfontmenucommand}"/>
+        <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcommand, DataType=vm:FormatViewModel}"/>
+        <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding FontMenuCommand, DataType=vm:FormatViewModel}"/>
         <Separator></Separator>
-        <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand}"/>
+        <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand, DataType=vm:FormatViewModel}"/>
         <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem"/>
        </MenuItem>
       
       <!--ViewHeaderModel-->
        <MenuItem Header="_View" x:Name="ViewMenuItem">
-        <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem"/>  
+        <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem" Command="{Binding ViewHelpCommand, DataType=vm:Viewheaderviewmodel}"/>  
         <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem"/>
-        <MenuItem Header ="Leave a Review" x:Name="ReviewMenutem"/>
+        <MenuItem Header ="Leave a Review" x:Name="ReviewMenuItem"/>
        </MenuItem>   
       </Menu>
  
      
       <Line></Line>
      <ScrollViewer>
-      <TextBox x:Name="MainTextbox" DataContext="TextbosxViewmodel.cs"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"> </TextBox>
+      <TextBox x:Name="MainTextbox"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"  x:DataType="vm:TextBoxViewModel"> </TextBox>
      </ScrollViewer>
 
      <Border VerticalAlignment="Bottom" Background="WhiteSmoke">
