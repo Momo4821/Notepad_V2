@@ -19,7 +19,7 @@ public partial class MainWindowView : Window
     {
         InitializeComponent();
         
-        //Delcare each view model when the Main view model is started
+      
     
 
     }
