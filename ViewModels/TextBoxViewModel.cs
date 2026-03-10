@@ -8,13 +8,11 @@ namespace Notepad_V2.ViewModels;
 
 
 
-
-
-
 public class TextBoxViewModel
 {
  TextboxModel _TextBoxModel { get; }
- 
+
+
 
 
 

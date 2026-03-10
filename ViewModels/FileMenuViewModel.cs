@@ -2,15 +2,50 @@ using System;
 using System.IO;
 using System.Windows.Input;
 using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using HarfBuzzSharp;
 using Notepad_V2.BaseCommands;
 using Notepad_V2.Models;
+using Notepad_V2.Views;
+
 namespace Notepad_V2.ViewModels;
-public class FileMenuViewModel // create an instance of the viewmodel in the mainview
+public class FileMenuViewModel
 {  
+    FileModel _filemodel;
+
+    public FileMenuViewModel(FileModel filemodel, ICommand openButtonCommand, ICommand newFileButtonCommand, ICommand newwindowMenuCommand, ICommand saveAsCommand, ICommand printCommand, ICommand exitCommand)
+    {
+        _filemodel = filemodel;
+        OpenButtonCommand = openButtonCommand;
+        NewFileButtonCommand = newFileButtonCommand;
+        NewwindowMenuCommand = newwindowMenuCommand;
+        SaveAsCommand = saveAsCommand;
+        PrintCommand = printCommand;
+        ExitCommand = exitCommand;
+
+
+        
+        
+        OpenButtonCommand.Execute(null);
+        NewFileButtonCommand.Execute(null);
+        NewwindowMenuCommand.Execute(null);
+        SaveAsCommand.Execute(null);
+        PrintCommand.Execute(null);
+        ExitCommand.Execute(null);
+        
+
+
+
+
+    }
+    public void Openfile()
+    {
+            
+            
+    }
     public ICommand OpenButtonCommand { get; set; }
     
-
+    
     public ICommand NewFileButtonCommand {get;set;}
 
     public ICommand NewwindowMenuCommand  {get;set;}
@@ -20,36 +55,26 @@ public class FileMenuViewModel // create an instance of the viewmodel in the mai
     public ICommand PrintCommand   {get;set;}
 
     public ICommand ExitCommand  {get;set;}
+
+  
     
-    public FileMenuViewModel()
+
+
+    public async void _OpenFile()
     {
+        _filemodel.Filepath = null;
+        var _toplevel = TopLevel.GetTopLevel(new MainWindowView());
+
+        var files = await _toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions());
+    
         
-     
-    var _Filemodel = new FileModel();
-    var _filetype = _Filemodel.Filetype;
-    var _filename = _Filemodel.filename;
-    var _filepath = _Filemodel.Filepath;
-    var _file = _Filemodel.file;
-    
-    OpenButtonCommand = new Commands();
-    O
-    
-    
-   
-
-    
-    
-    
-                                                        
-                                                        
-                                                        
+        
     }
-     
-   
-      
-
+    
+    
+    
  
- 
+    
 
 
     
