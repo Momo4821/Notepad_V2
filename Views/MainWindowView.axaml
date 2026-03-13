@@ -68,17 +68,15 @@
         <MenuItem Header ="Leave a Review" x:Name="ReviewMenuItem"/>
        </MenuItem>   
       </Menu>
- 
-     
       <Line></Line>
-     <ScrollViewer>
-      <TextBox x:Name="MainTextbox"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"  x:DataType="vm:TextBoxViewModel"> </TextBox>
-     </ScrollViewer>
+ 
+ 
+ <ScrollViewer>
+  <TextBox x:Name="MainTextbox"  BorderThickness="0" AcceptsReturn="True" AcceptsTab="True"  x:DataType="vm:TextBoxViewModel"> </TextBox>
+ </ScrollViewer>
 
      <Border VerticalAlignment="Bottom" Background="WhiteSmoke">
       
-      <TextBlock x:Name="TextBlockFileLabel">
-       Label For files modified without saving.</TextBlock>
       
      </Border>
     </controls:DockPanel>

@@ -12,37 +12,7 @@ namespace Notepad_V2.ViewModels;
 public class FileMenuViewModel
 {  
     FileModel _filemodel;
-
-    public FileMenuViewModel(FileModel filemodel, ICommand openButtonCommand, ICommand newFileButtonCommand, ICommand newwindowMenuCommand, ICommand saveAsCommand, ICommand printCommand, ICommand exitCommand)
-    {
-        _filemodel = filemodel;
-        OpenButtonCommand = openButtonCommand;
-        NewFileButtonCommand = newFileButtonCommand;
-        NewwindowMenuCommand = newwindowMenuCommand;
-        SaveAsCommand = saveAsCommand;
-        PrintCommand = printCommand;
-        ExitCommand = exitCommand;
-
-
-        
-        
-        OpenButtonCommand.Execute(null);
-        NewFileButtonCommand.Execute(null);
-        NewwindowMenuCommand.Execute(null);
-        SaveAsCommand.Execute(null);
-        PrintCommand.Execute(null);
-        ExitCommand.Execute(null);
-        
-
-
-
-
-    }
-    public void Openfile()
-    {
-            
-            
-    }
+    
     public ICommand OpenButtonCommand { get; set; }
     
     
@@ -56,20 +26,51 @@ public class FileMenuViewModel
 
     public ICommand ExitCommand  {get;set;}
 
+    
+   
+    public FileMenuViewModel()
+    {
+        
+        
+      
+        
+        
+        
+       
+        
+        
+    }
+    
+    
+ 
+
+
   
     
 
 
     public async void _OpenFile()
     {
-        _filemodel.Filepath = null;
         var _toplevel = TopLevel.GetTopLevel(new MainWindowView());
-
         var files = await _toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions());
-    
+        
+        
         
         
     }
+    
+    
+    public async void _saveAs()
+    {
+        var _toplevel = TopLevel.GetTopLevel(new MainWindowView());
+
+        var files = await _toplevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions());
+        
+        
+    }
+    
+    
+    
     
     
     

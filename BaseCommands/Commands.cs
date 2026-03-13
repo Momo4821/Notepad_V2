@@ -6,12 +6,8 @@ using Notepad_V2.ViewModels;
 namespace Notepad_V2.BaseCommands;
 
 public class Commands : ICommand
-{
-    
-    public event EventHandler? CanExecuteChanged;
-    
 
-    
+{
     public bool CanExecute(object? parameter)
     {
         throw new NotImplementedException();
@@ -22,5 +18,5 @@ public class Commands : ICommand
         throw new NotImplementedException();
     }
 
-    
+    public event EventHandler? CanExecuteChanged;
 }
