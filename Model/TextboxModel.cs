@@ -28,11 +28,7 @@ TextBoxView _textBoxView;
 
 
 
-private void Textbox_TextChanged(object sender, TextChangedEventArgs e)
-{
-    ismodied = true;
-    
-}
+
 
 
 

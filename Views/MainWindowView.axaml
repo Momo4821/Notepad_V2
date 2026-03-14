@@ -18,9 +18,13 @@
 
 <!--Menu Items-->
 
+ 
+ 
+ 
 
         <controls:DockPanel>
-      <Menu DockPanel.Dock="Top">
+         <views:FileMenuView/>
+         <Menu DockPanel.Dock="Top">
   <MenuItem Header="File" x:Name="Filemenu"  >
    <MenuItem Header="New"  x:Name="NewFilemenu"  Command="{Binding NewFileButtonCommand, DataType=viewModels:FileMenuViewModel}"/>
    <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
