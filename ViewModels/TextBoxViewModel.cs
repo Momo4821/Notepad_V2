@@ -14,9 +14,6 @@ public class TextBoxViewModel
  
  FileModel _filemodel;
  FileMenuViewModel _filemenuviewmodel;
- FormatViewModel _formatviewmodel;
- EditMenuViewModel _editmenuviewmodel;
- Viewheaderviewmodel _viewheaderviewmodel;
  TextboxModel _TextBoxModel;
  LowerLabelsModel _lowerlabelsmodel;
  
@@ -36,7 +33,7 @@ public class TextBoxViewModel
  private void MainTextbox_OnSizeChanged(object? sender, SizeChangedEventArgs e)
  {
 var Mainwindowview = new MainWindowView();
-  var maintextbox = Mainwindowview.MainTextbox;
+  //var maintextbox = Mainwindowview.MainTextbox;
   
   
   

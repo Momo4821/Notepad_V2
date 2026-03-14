@@ -1,3 +1,4 @@
+/*
 using System;
 using System.Windows.Input;
 using Notepad_V2.Models;
@@ -10,7 +11,7 @@ public class Commands : ICommand
 {
     public bool CanExecute(object? parameter)
     {
-        throw new NotImplementedException();
+        return true;
     }
 
     public void Execute(object? parameter)
@@ -20,3 +21,4 @@ public class Commands : ICommand
 
     public event EventHandler? CanExecuteChanged;
 }
+*/
