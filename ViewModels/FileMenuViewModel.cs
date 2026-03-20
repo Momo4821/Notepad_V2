@@ -16,6 +16,9 @@ public class FileMenuViewModel : ObservableObject
     LowerLabelsModel _lowerlabelsmodel;
     TextboxModel _textboxmodel;
     
+    
+    TextBoxView _textBoxviewmodel;
+    
     public ICommand OpenButtonCommand {get;}
     
     
@@ -93,6 +96,25 @@ public class FileMenuViewModel : ObservableObject
         
         
         
+    }
+    
+    
+    public async void _save()
+    {
+        var _toplevel = TopLevel.GetTopLevel(new MainWindowView());
+        
+        var files = await _toplevel.StorageProvider.SaveFilePickerWithResultAsync(new FilePickerSaveOptions());
+        
+        _filemodel.FileName = _toplevel.Name;
+        _filemodel.Filetype = _toplevel.GetType().ToString();
+        _filemodel.Filepath = _toplevel.StorageProvider.TryGetFileFromPathAsync(_filemodel.Filepath).ToString();
+        _textboxmodel.Text = files.File.ToString();
+        
+
+
+
+
+
     }
     
     
