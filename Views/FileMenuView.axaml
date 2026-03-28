@@ -3,60 +3,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:notepadV2="clr-namespace:Notepad_V2"
-             xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
              xmlns:viewModels="clr-namespace:Notepad_V2.ViewModels"
-             xmlns:views="clr-namespace:Notepad_V2.Views"
+             x:DataType="viewModels:FileMenuViewModel"
              x:Class="Notepad_V2.Views.FileMenuView">
+
  
+ 
+<!--<Design.DataContext>
+ <viewModels:FileMenuViewModel/>
+</Design.DataContext>-->
+
+<!--<UserControl.Resources>
+ 
+ <viewModels:FileMenuViewModel x:Key="filevm"></viewModels:FileMenuViewModel>
+ 
+</UserControl.Resources>-->
 
  <Menu DockPanel.Dock="Top">
   <MenuItem Header="File" x:Name="Filemenu"  >
-   <MenuItem Header="New"  x:Name="NewFilemenu"  Command="{Binding NewFileButtonCommand, DataType=viewModels:FileMenuViewModel}"/>
-   <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
-   <MenuItem Header="Open..." x:Name="OpenMenu" Command="{Binding OpenButtonCommand ,DataType=viewModels:FileMenuViewModel}"/>
-   <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand, DataType=viewModels:FileMenuViewModel}"  />
-   <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand, DataType=viewModels:FileMenuViewModel}" />
+   <MenuItem Header="New"  x:Name="NewFilemenu"  Command="{Binding NewFileButtonCommand}"/>
+   <MenuItem Header="New Window" x:Name="NewWindowMenu" Command="{Binding NewwindowMenuCommand}"/>
+   <MenuItem Header="Open..."  x:Name="OpenMenu" Command="{Binding OpenButtonCommand}"/>
+   <MenuItem Header="Save" x:Name="SaveMenucommand" Command="{Binding SaveCommand}" />
+   <MenuItem Header="Save As..." x:Name="SaveasMenu" Command="{Binding SaveAsCommand}"  />
+   <MenuItem Header="Print" x:Name="PrintMenu" Command="{Binding PrintCommand}" />
    <Separator></Separator>
-   <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand, DataType=viewModels:FileMenuViewModel}" />
+   <MenuItem Header="Exit" x:Name="ExitMenu" Command="{Binding ExitCommand}" />
   </MenuItem>
  
   
       <!--EditMenuViewModels -->
    
        <MenuItem Header="_Edit" x:Name="EditMenu">
-        <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand , DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutMenuCommand , DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand , DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PasteMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
+        <MenuItem Header="Undo" x:Name="UndoMenu" Command="{Binding UndoCommand }"/>
+        <MenuItem Header="Cut" x:Name="CutMenu" Command="{Binding CutMenuCommand }"/>
+        <MenuItem Header="Copy" x:Name="CopyMenu" Command="{Binding CopyMenuCommand }"/>
+        <MenuItem Header="Paste" x:Name="PasteMenu" Command="{Binding PasteMenuCommand}"/>
+        <MenuItem Header="Delete" x:Name="DeleteMenu" Command="{Binding DeleteMenuCommand}"/>
     
         <Separator></Separator>
         <MenuItem Header="Find..." x:Name="FindMenu"/>
-        <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand , DataType=viewModels:FileMenuViewModel}"/> 
-        <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GotoMenuCommand , DataType=viewModels:FileMenuViewModel}"/>
+        <MenuItem Header="Find Next" x:Name="FindNextMenu" Command="{Binding FindNextMenuCommand}"/>
+        <MenuItem Header="Replace..." x:Name="ReplaceMenu" Command="{Binding ReplaceMenuCommand }"/> 
+        <MenuItem Header="Go To..." x:Name="GoTomenuitem" Command="{Binding GotoMenuCommand }"/>
         <Separator></Separator>
-        <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand, DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
+        <MenuItem Header="Select All" x:Name="SelectAllmenuitem" Command="{Binding SelectAllMenuItemCommand}"/>
+        <MenuItem Header="Time/Date" x:Name="TimeDateMenuItem" Command="{Binding TimeDateMenuCommand}"/>
        </MenuItem> 
      
      <!--FormatViewModel-->
        <MenuItem Header="_Format" x:Name="FormatMenuitem"> 
-        <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcommand, DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding FontMenuCommand, DataType=viewModels:FileMenuViewModel}"/>
+        <MenuItem Header="Word Wrap" x:Name="WordWrapMenuItem" Command="{Binding Wordwrapcommand}"/>
+        <MenuItem Header ="Font..." x:Name="FontMenuItem" Command="{Binding FontMenuCommand}"/>
         <Separator></Separator>
-        <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand, DataType=viewModels:FileMenuViewModel}"/>
-        <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem" Command="{Binding NumberedListCommand, DataType=viewModels:FileMenuViewModel}"/>
+        <MenuItem Header="Bulletin list" x:Name="BulletinListMenuItem" Command="{Binding BulletinlistCommand}"/>
+        <MenuItem Header="Numbered list" x:Name="NumberedListMenuItem" Command="{Binding NumberedListCommand}"/>
        </MenuItem>
       
       <!--ViewHeaderModel-->
        <MenuItem Header="_View" x:Name="ViewMenuItem">
-        <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem" Command="{Binding ViewHelpCommand, DataType=viewModels:FileMenuViewModel}"/>  
-        <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem"/>
-        <MenuItem Header ="Leave a Review" x:Name="ReviewMenuItem"/>
+        <MenuItem Header ="View Help" x:Name="ViewHelpMenuItem" Command="{Binding ViewHelpCommand}"/>  
+        <MenuItem Header="About Notepad_V2" x:Name="AboutMenuItem" Command="{Binding AboutMenuItemCommand}"/>
+        <MenuItem Header ="Leave a Review" x:Name="ReviewMenuItem" Command="{Binding LeaveReviewCommand}"/>
        </MenuItem>   
       </Menu>
+
 
 </UserControl>
 
