@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
@@ -143,6 +144,7 @@ public  partial class FileMenuViewModel : ObservableObject
         var mainwindow = new MainWindowView(); 
     var toplevel = TopLevel.GetTopLevel(mainwindow);
     var files = await toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+  
         {
         Title    = "Open File",
         AllowMultiple = true,
@@ -155,28 +157,30 @@ public  partial class FileMenuViewModel : ObservableObject
             
             
             
-            
-        }}
+        }});
     /*if(files!=null)
 
     {
+    
         
         using StreamReader sr = new StreamReader();
         sr.ReadAsync(_t
         
         
     }*/
-    
-    
-    
-    );
-    
 
     
- 
-  
     
-    
+    //get file type for labels
+    _filemodel.Filetype = files.GetType().ToString();
+    _filemodel.Filetype = files.GetType().Name;
+
+
+
+
+
+
+
     }
     
  
