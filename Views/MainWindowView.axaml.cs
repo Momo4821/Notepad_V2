@@ -17,6 +17,8 @@ public partial class MainWindowView : Window
 {
     public MainWindowView()
     {
+        this.Width = 800;
+        this.Height = 450;
         InitializeComponent();
 
     }

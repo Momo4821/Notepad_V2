@@ -6,59 +6,41 @@ using Microsoft.VisualBasic;
 
 namespace Notepad_V2.Models;
 
-public class LowerLabelsModel : INotifyPropertyChanged
-{    /*public DateAndTime Colum_Row  { get;}
-    //public string _User_id { get;}
-   // public string TextBlockFileLabel { get; set; }
+public partial class LowerLabelsModel : ObservableObject
+{    
+    
+    [ObservableProperty]
+    private string _col;
 
-   public string ZoomLabel { get; set; }*/
- 
+    [ObservableProperty]
+
+    private string _row;
+
+    
+    public string col_row => $"{_col}{_row}";
+
+
+
+
     
     
-private string _Colum_Row { get; set; }
-private string _ZoomLabel { get; set; }
-private ulong  _characters { get; set; }
-public event PropertyChangedEventHandler? PropertyChanged;
-private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") // got this from the docs
-{
-    if (PropertyChanged != null) // my undestanding of this is that when this is a method that will ba called if a property is changed(ex:if a filename is changed it will get the new file name)
-            
+    partial void OnColChanged (string value)
     {
-        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        OnPropertyChanged(nameof(col_row));
     }
-}
+    
+    
+    partial void OnRowChanged (string value)
 
-public string Colum_Row
-{
-    get => _Colum_Row;
-    set
-    {
-        _Colum_Row = value;
-        NotifyPropertyChanged(Colum_Row);
+    {   
+    OnPropertyChanged(nameof(col_row));
+        
+        
     }
-}
-
-
-public string ZoomLabel
-{
-    get => _ZoomLabel;  
-    set
-    {
-        _ZoomLabel = value;
-        NotifyPropertyChanged(ZoomLabel);
-    }
-}
-
-public ulong Characters
-{
-    get => _characters;
-    set
-    {
-        _characters = value;
-        NotifyPropertyChanged(Characters.ToString());
-    }
+    
+    
 }   
-}   
+
 
     
     

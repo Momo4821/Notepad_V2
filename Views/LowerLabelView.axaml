@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Notepad_V2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:LowerLabelViewModel"
+             x:Class="Notepad_V2.Views.LowerLabelView">
+   
+    
+    
+    
+    
+    
+   <Grid>
+   <Grid.ColumnDefinitions>
+       <ColumnDefinition Width="*"/>
+       <ColumnDefinition Width="*"/>
+       <ColumnDefinition Width="*"/>
+       
+   </Grid.ColumnDefinitions>    
+   <Grid.RowDefinitions>
+       
+       
+       
+   </Grid.RowDefinitions>   
+    <Label Grid.Column="0" 
+           
+           x:Name="UpdateColRowLabel"
+           Content="0" 
+           HorizontalAlignment="Left" 
+           HorizontalContentAlignment="Left"
+           VerticalAlignment="Bottom"
+           Margin="10,0,0,0">
+        
+    </Label>
+   </Grid>
+    
+    
+</UserControl>

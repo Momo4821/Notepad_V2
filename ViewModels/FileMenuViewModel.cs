@@ -1,209 +1,118 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Windows.Input;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HarfBuzzSharp;
-using Notepad_V2.BaseCommands;
 using Notepad_V2.Models;
-using Notepad_V2.Views;
-using Tmds.DBus.Protocol;
+
 
 namespace Notepad_V2.ViewModels;
-public  partial class FileMenuViewModel : ObservableObject
+public partial class FileMenuViewModel : ObservableObject
 {  
-    FileModel _filemodel;
-    LowerLabelsModel _lowerlabelsmodel;
     
-    
-    TextboxModel _textboxmodel;
-    TextBoxView _textBoxview;
-    TextBoxViewModel _textBoxViewModel;
-    
-    
-    
-    
-    
-    public FilemenuCommand NewFileButtonCommand {get;set;}
-
-    public FilemenuCommand OpenButtonCommand {get;}
-    public FilemenuCommand NewwindowMenuCommand  {get;set;}
-
-    public FilemenuCommand SaveAsCommand   {get;set;}
-    public FilemenuCommand SaveCommand  {get;set;}
-
-    public FilemenuCommand PrintCommand   {get;set;}
-
-    public FilemenuCommand ExitCommand  {get;set;}
-
-    public FilemenuCommand UndoCommand  {get;set;}
-    
-    public FilemenuCommand CutMenuCommand  {get;set;}
-    public FilemenuCommand CopyMenuCommand  {get;set;}
-    public FilemenuCommand PasteMenuCommand  {get;set;}
-    public FilemenuCommand DeleteMenuCommand  {get;set;}
-    
-    public FilemenuCommand FindNextMenuCommand  {get;set;}
-    
-    public FilemenuCommand ReplaceMenuCommand  {get;set;}
-    
-    public FilemenuCommand GotoMenuCommand  {get;set;}
-    
-    public FilemenuCommand SelectAllMenuItemCommand  {get;set;}
-    public FilemenuCommand TimeDateMenuCommand  {get;set;}
-    
-    public FilemenuCommand Wordwrapcommand  {get;set;}
+    private readonly FileMenuModel _menuModel;
+    private readonly LowerLabelsModel _labels;
    
-    public FilemenuCommand FontMenuCommand  {get;set;}
     
-    public FilemenuCommand BulletinlistCommand  {get;set;}
     
-    public FilemenuCommand NumberedListCommand  {get;set;}
-    
-    public FilemenuCommand ViewHelpCommand  {get;set;}
-    
-    public FilemenuCommand AboutMenuItemCommand  {get;set;}
-    
-    public FilemenuCommand LeaveReviewCommand {get;set;}
-    
-    public FileMenuViewModel()
-    {   
-        _filemodel =  new FileModel();
-        _lowerlabelsmodel = new LowerLabelsModel();
-        _textboxmodel = new TextboxModel();
-        _textBoxview = new TextBoxView();
-        _textBoxViewModel = new TextBoxViewModel();
-      
-
-     /*//File
-     NewFileButtonCommand = new FilemenuCommand();
-     NewwindowMenuCommand = new FilemenuCommand();*/
-     OpenButtonCommand = new FilemenuCommand(_OpenButtonCommand);
-    
-     
-     
-     /*
-     SaveAsCommand = new FilemenuCommand();
-     SaveAsCommand = new FilemenuCommand();
-     PrintCommand = new FilemenuCommand();
-     ExitCommand = new FilemenuCommand();
-     
+    public FileMenuViewModel (FileMenuModel model)
+    {
         
-     
-     //Edit
-     UndoCommand = new FilemenuCommand();
-     CutMenuCommand = new FilemenuCommand();
-     CopyMenuCommand = new FilemenuCommand();
-     PasteMenuCommand = new FilemenuCommand();
-     DeleteMenuCommand = new FilemenuCommand();
-     FindNextMenuCommand = new FilemenuCommand();
-     ReplaceMenuCommand = new FilemenuCommand();
-     GotoMenuCommand = new FilemenuCommand();
-     SelectAllMenuItemCommand = new FilemenuCommand();
-     TimeDateMenuCommand = new FilemenuCommand();
-     
+     _menuModel = model;
+     _labels = new LowerLabelsModel();   
         
-     //Format
-     Wordwrapcommand = new FilemenuCommand();
-     FontMenuCommand = new FilemenuCommand();
-     BulletinlistCommand = new FilemenuCommand();
-     NumberedListCommand = new FilemenuCommand();
-     
-     
-     //view
-     ViewHelpCommand = new FilemenuCommand();
-     AboutMenuItemCommand = new FilemenuCommand();
-     LeaveReviewCommand = new FilemenuCommand();
-     */
-     
-     
         
         
     }
-
-
     
     
     
+    public FileMenuModel Menu => _menuModel;
+    public LowerLabelsModel Labels => _labels;
     
     
-    //Filemenu Execute Commadns
+    
+    public bool CanExecuteOpenFile 
     
     
-    //File
     
     [RelayCommand]
-    public async void _OpenButtonCommand(  )
-    { 
-       
-        
-        var mainwindow = new MainWindowView(); 
-    var toplevel = TopLevel.GetTopLevel(mainwindow);
-    var files = await toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
-  
-        {
-        Title    = "Open File",
-        AllowMultiple = true,
-        FileTypeFilter = new List<FilePickerFileType>
-        {
-            new FilePickerFileType("Text Files")
-            {
-                Patterns = new[] { "*.txt" }
-            },
-            
-            
-            
-        }});
-    /*if(files!=null)
-
+    public async Task OpenFile()
     {
-    
+        var window = new MainWindowView();
         
-        using StreamReader sr = new StreamReader();
-        sr.ReadAsync(_t
+        var toplevel = TopLevel.GetTopLevel(window);
+        
+        var files = await toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+
+        {
+            Title = "Open File",
+            AllowMultiple = false,
+            SuggestedFileType = FilePickerFileTypes.TextPlain,
+            
+            });
+            
+   
+        
+        if (files.Count >= 1)
+        {
+            
+        using var stream = await files[0].OpenReadAsync();            
+         using var  streamreader = new StreamReader(stream);   
+         _menuModel.Content = await streamreader.ReadToEndAsync();
+      
+         
+        }
+     
+            
         
         
-    }*/
-
-    
-    
-    //get file type for labels
-    _filemodel.Filetype = files.GetType().ToString();
-    _filemodel.Filetype = files.GetType().Name;
-
-
-
-
-
-
-
+        
     }
     
- 
+  
     
-
-
+    [RelayCommand]
+    public async Task SaveFile()
+    {
+        
+        var window = new MainWindowView();
+        
+        var toplevel = TopLevel.GetTopLevel(window);
+        
+        
+        var file = await toplevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+        {
+            Title = "Save File",
+            SuggestedFileName = "Untitled",
+            DefaultExtension = "txt",
+            ShowOverwritePrompt = true,
+            });
+        
+        
+        
+        if (file != null)
+        {
+            await using var stream = await file.OpenWriteAsync();
+            using var  streamwriter = new StreamWriter(stream);
+            await streamwriter.WriteLineAsync(_menuModel.Content);
+            
+            
+            
+        }
+        
+        
+        
+            
     
-
-
-
+    }
     
     
     
-
-
-
-
     
-
+    }
     
+  
     
-
-
-
-
-}
+  

@@ -6,44 +6,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:notepadV2="clr-namespace:Notepad_V2"
     xmlns:views="clr-namespace:Notepad_V2.Views"
+    xmlns:viewModels="clr-namespace:Notepad_V2.ViewModels"
     Title="Notepad_V2"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:CompileBindings="True"
-   x:DataType="notepadV2:MainWindowView">
+   x:DataType="viewModels:MainWindowViewModel">
  
 
 <Grid>
 <Grid.ColumnDefinitions>
-   <ColumnDefinition/>
-   <ColumnDefinition/>
+
 </Grid.ColumnDefinitions>
- 
-    <DockPanel
-        Dock="Top">
-        
-    </DockPanel>
     
-    <views:FileMenuView Grid.Row="0" Grid.Column="0"/>
-    <views:TextBoxView Grid.Row="0" Grid.Column="1"/>
     <Grid.RowDefinitions>
-        <RowDefinition />
-        <RowDefinition />
+     
     </Grid.RowDefinitions>
     
-</Grid>
-
-
+    <views:FileMenuView Grid.Row="0" Grid.Column="0"/>
  
+    <views:LowerLabelView Grid.Row="2" Grid.Column="0"></views:LowerLabelView>
+    
+</Grid>
+    
+   <!--View → binds to → ViewModel
 
-   
+ViewModel → exposes → Model properties
 
-   
-
-        
-        
-       
-        
-  
+Model → contains → data=-->
 </Window>
