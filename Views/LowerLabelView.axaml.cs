@@ -8,10 +8,18 @@ namespace Notepad_V2.Views;
 
 public partial class LowerLabelView : UserControl
 {
+    
+   
     public LowerLabelView()
     {
-        InitializeComponent();
+
         var model = new LowerLabelsModel();
-        DataContext = new LowerLabelViewModel(model);
+        DataContext = model;
+        InitializeComponent();
+    
+  
+      
     }
+    
+
 }

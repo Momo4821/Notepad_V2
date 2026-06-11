@@ -9,12 +9,13 @@ namespace Notepad_V2.Views;
 
 public partial class FileMenuView : UserControl
 {
+    
+    public LowerLabelsModel LowerLabels { get; set; }
+    public FileMenuModel  FileMenu { get; set; }
     public FileMenuView()
     {
-      
         InitializeComponent();
-        var model = new FileMenuModel();
-        DataContext = new FileMenuViewModel(model);
+        DataContext = new FileMenuViewModel(FileMenu) ;
         
         
     }

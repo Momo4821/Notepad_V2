@@ -20,30 +20,34 @@
                   x:Name="Filemenu">
 
             <MenuItem Header="New"
-                      x:Name="NewFilemenu" />
+                      x:Name="NewFilemenu" 
+                       Command="{Binding NewFileCommand}" />
 
             <MenuItem Header="New Window"
-                      x:Name="NewWindowMenu" />
+                      x:Name="NewWindowMenu" 
+                       Command="{Binding NewwindowCommand}" />
 
             <MenuItem Header="Open..."
                       x:Name="OpenMenu"
-                      Command="{Binding OpenFileCommand}" 
-                      />
+                      Command="{Binding OpenFileCommand}" />
 
             <MenuItem Header="Save"
                       x:Name="SaveMenu"
                       Command="{Binding SaveFileCommand}" />
 
             <MenuItem Header="Save As..."
-                      x:Name="SaveasMenu" />
+                      x:Name="SaveasMenu" 
+                      Command="{Binding SaveasCommand}"/>
 
             <MenuItem Header="Print"
-                      x:Name="PrintMenu" />
+                      x:Name="PrintMenu"
+                      Command="{Binding PrintCommand}"/>
 
             <Separator />
 
             <MenuItem Header="Exit"
-                      x:Name="ExitMenu" />
+                      x:Name="ExitMenu"
+                      Command="{Binding ExitCommand}"/>
         </MenuItem>
 
         <!-- Edit Menu -->
@@ -51,19 +55,24 @@
                   x:Name="EditMenu">
 
             <MenuItem Header="Undo"
-                      x:Name="UndoMenu" />
+                      x:Name="UndoMenu"
+                      Command="{Binding UndoCommand}"/>
 
             <MenuItem Header="Cut"
-                      x:Name="CutMenu" />
+                      x:Name="CutMenu"
+                      Command="{Binding CutCommand}"/>
 
             <MenuItem Header="Copy"
-                      x:Name="CopyMenu" />
+                      x:Name="CopyMenu"
+                      Command="{Binding CopyCommand}"/>
 
             <MenuItem Header="Paste"
-                      x:Name="PasteMenu" />
+                      x:Name="PasteMenu"
+                      Command="{Binding PasteCommand}"/>
 
             <MenuItem Header="Delete"
-                      x:Name="DeleteMenu" />
+                      x:Name="DeleteMenu"
+                      Command="{Binding DeleteCommand}"/>
 
             <Separator />
 
@@ -138,7 +147,7 @@
 
     <!-- Editor -->
     <TextBox x:Name="ContentTextBox"
-             Text="{Binding Path= Menu.Content}"
+             Text="{Binding Path= Content}"
              Grid.Column="1"
              Grid.Row="1"
              Margin="1,1,1,0"

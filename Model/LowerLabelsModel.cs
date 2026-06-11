@@ -13,30 +13,27 @@ public partial class LowerLabelsModel : ObservableObject
     private string _col;
 
     [ObservableProperty]
-
     private string _row;
 
     
-    public string col_row => $"{_col}{_row}";
+    [ObservableProperty]
+    private string _zoom;
+    
+    
+    public string col_row => $"{Col},{Row}";
 
-
+    
 
 
     
     
-    partial void OnColChanged (string value)
-    {
-        OnPropertyChanged(nameof(col_row));
-    }
+    partial void OnColChanged (string value)  => OnPropertyChanged(nameof(col_row));
     
     
-    partial void OnRowChanged (string value)
-
-    {   
-    OnPropertyChanged(nameof(col_row));
-        
-        
-    }
+    
+    partial void OnRowChanged (string value) => OnPropertyChanged(nameof(col_row));
+    
+    
     
     
 }   

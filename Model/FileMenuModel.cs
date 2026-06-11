@@ -4,34 +4,21 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.VisualBasic;
 using Tmds.DBus.Protocol;
 
 namespace Notepad_V2.Models; 
 
-public partial class FileMenuModel : ObservableObject
+public partial class FileMenuModel
 {
-    //Textbox
-    
-    [ObservableProperty]
-    private string content;
-    
-    
-   [ObservableProperty]
-   private string filepath;
-  
-   
-    
-    
-    
+    public string Content { get; set; }
+    public string Filepath { get; set; }
+
     public string Filename => Path.GetFileName(Filepath);
-    
     public string Filetype => Path.GetExtension(Filepath);
-    
-    public string Downloads => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-
-
-
+    public bool IsFile => !string.IsNullOrEmpty(Filepath);
+   
 } 
-    
+
