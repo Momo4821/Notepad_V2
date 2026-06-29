@@ -24,9 +24,9 @@
      
     </Grid.RowDefinitions>
     
-    <views:FileMenuView Grid.Row="0" Grid.Column="0"/>
+    <views:FileMenuView x:Name="FileMenuView" Grid.Row="0" Grid.Column="0"/>
  
-    <views:LowerLabelView Grid.Row="2" Grid.Column="0"></views:LowerLabelView>
+    <views:LowerLabelView x:Name="LowerLabelView" Grid.Row="2" Grid.Column="0"></views:LowerLabelView>
     
 </Grid>
     

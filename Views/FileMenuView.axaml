@@ -7,27 +7,35 @@
              x:DataType="viewModels:FileMenuViewModel"
              x:Class="Notepad_V2.Views.FileMenuView">
     
-    
+    <UserControl.Styles>
+        <Style Selector="MenuItem">
+            <Setter Property="Focusable" Value="False"/>
+        </Style>
+    </UserControl.Styles>
  <Grid>
 
+     
+     
     <Menu Grid.Column="0"
           Grid.Row="0"
           HorizontalAlignment="Left"
           VerticalAlignment="Top">
-
+      
         <!-- File Menu -->
         <MenuItem Header="File"
                   x:Name="Filemenu">
 
             <MenuItem Header="New"
+                  
                       x:Name="NewFilemenu" 
-                       Command="{Binding NewFileCommand}" />
+                       Command="{Binding  NewFileCommand}" />
 
             <MenuItem Header="New Window"
                       x:Name="NewWindowMenu" 
-                       Command="{Binding NewwindowCommand}" />
+                       Command="{Binding NewWindowCommand}" />
 
             <MenuItem Header="Open..."
+                  
                       x:Name="OpenMenu"
                       Command="{Binding OpenFileCommand}" />
 
@@ -37,15 +45,17 @@
 
             <MenuItem Header="Save As..."
                       x:Name="SaveasMenu" 
-                      Command="{Binding SaveasCommand}"/>
+                      Command="{Binding SaveFileasCommand}"/>
 
             <MenuItem Header="Print"
+                   
                       x:Name="PrintMenu"
                       Command="{Binding PrintCommand}"/>
 
             <Separator />
 
             <MenuItem Header="Exit"
+                   
                       x:Name="ExitMenu"
                       Command="{Binding ExitCommand}"/>
         </MenuItem>
@@ -56,9 +66,11 @@
 
             <MenuItem Header="Undo"
                       x:Name="UndoMenu"
+                    
                       Command="{Binding UndoCommand}"/>
 
             <MenuItem Header="Cut"
+                     
                       x:Name="CutMenu"
                       Command="{Binding CutCommand}"/>
 
@@ -70,7 +82,7 @@
                       x:Name="PasteMenu"
                       Command="{Binding PasteCommand}"/>
 
-            <MenuItem Header="Delete"
+            <MenuItem Header="Delete" 
                       x:Name="DeleteMenu"
                       Command="{Binding DeleteCommand}"/>
 
@@ -96,6 +108,10 @@
             <MenuItem Header="Time/Date"
                       x:Name="TimeDateMenuItem" />
         </MenuItem>
+        
+        
+        
+        
 
         <!-- Format Menu -->
         <MenuItem Header="_Format"
@@ -155,7 +171,11 @@
              VerticalAlignment="Center"
              Width="736"
              Height="388"
-             BorderThickness="1"/>
+             BorderThickness="1"
+             AcceptsReturn="True"
+             Focusable="True"
+             IsInactiveSelectionHighlightEnabled="True"
+             />
 
 </Grid>   
    

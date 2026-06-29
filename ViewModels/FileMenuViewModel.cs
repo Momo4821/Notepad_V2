@@ -1,308 +1,229 @@
 using System;
 using System.IO;
-using System.Linq;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Input.Platform;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MsBox.Avalonia;
-using MsBox.Avalonia.Base;
 using MsBox.Avalonia.Dto;
 using Notepad_V2.Models;
-using Tmds.DBus.Protocol;
 using MsBox.Avalonia.Enums;
+using Notepad_V2.Views;
 
 
 namespace Notepad_V2.ViewModels;
 
 public partial class FileMenuViewModel : ObservableObject
-{
-    private readonly FileMenuModel _fileMenuModel;
+{ 
+    private readonly FileModel  _fileModel;
+    private readonly FileMenuView _view;
     
-    
-    
-    
-    
-    public FileMenuViewModel (FileMenuModel model)
+    public FileMenuViewModel (FileModel model, FileMenuView view)
     {
+
+        _view = view;
+        _fileModel = model;
         
+    }
+
+
+    #region CleaUi
+    private void cleardata ()
+    {
+        Content = string.Empty;
+        FileName = string.Empty;
+        FileType = string.Empty;
         
-       Content = model.Content;
-       Filepath = model.Filepath;
-     
     }
     
     
+    #endregion
+    #region ObservableProperties
+
     [ObservableProperty]
     private string _content;
     
     [ObservableProperty]
-    private string _filepath;
+    private string _fileName;
+    [ObservableProperty]
+    private string _filePath;
+    [ObservableProperty]
+    private string _fileType; 
     
+    [ObservableProperty]
+    private bool _NewFileCreated;
 
-    
-    
-    
-    
-    [RelayCommand]
-    public async Task OpenFile()
-    {
-        var box = MessageBoxManager
-            .GetMessageBoxStandard("Title", "Do you wish to save File before Opening another File", ButtonEnum.YesNoCancel);
-        
-     var result = await box.ShowAsync();
-        switch (result)
-        {
-            case ButtonResult.Yes:
-                await SaveFile();
-                break;
-            case ButtonResult.No:
-                break;
-            case ButtonResult.Cancel:
-            break;
-        }
-        
-        
-        
-        var window = new MainWindowView();
-        
-        var toplevel = TopLevel.GetTopLevel(window);
-        
-        var files = await toplevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
-
-        {
-            
-            Title = "Open File",
-            AllowMultiple = false,
-            SuggestedFileType = FilePickerFileTypes.TextPlain,
-            FileTypeFilter = new FilePickerFileType[]
-            {
-                new FilePickerFileType("Text Files")
-                {
-                    Patterns = new string[] { "*.txt" }
-                },
-                new FilePickerFileType("All Files")
-                {
-                    Patterns = new string[] { "*.*" }
-                }
-            },
-            
-            });
-            
+    #endregion
    
-        
-        
-            
-        
-        if (files.Count >= 1)
-        {
-     
-            using (StreamReader sr = new StreamReader(files[0].OpenReadAsync().GetAwaiter().GetResult()))
-             {
-                
-               Content = sr.ReadToEnd();
-               Filepath = files[0].TryGetLocalPath() ?? string.Empty;
-                
-                  
-             }
-           
-           
-            
-        /*using var stream = await files[0].OpenReadAsync();            
-         using var  streamreader = new StreamReader(stream);   
-         FileMenuModel.Content = await streamreader.ReadToEndAsync();
-        // FileMenuModel.Filepath = converter.ConvertFromString(files[0].Name)?.ToString() ?? "Untitled";*/
-        }
-
-        
-
-
-
-
-    }
     
-    [RelayCommand] 
-    public async Task NewFile()
-      {
-      
-      
-      
-      
-      }
     
+    #region Filemenu
     [RelayCommand]
-    public async Task SaveFile()
+    private async Task NewFile ()
     {
         
-        var window = new MainWindowView();
-        
-        var toplevel = TopLevel.GetTopLevel(window);
-        
-        var downloads = toplevel.StorageProvider.TryGetFolderFromPathAsync(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads");
-        
-        
-        var file = await toplevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
-        {
-            Title = "Save File",
-            SuggestedFileName = "Untitled",
-            DefaultExtension = "txt",
-            ShowOverwritePrompt = true,
-            SuggestedStartLocation = downloads.GetAwaiter().GetResult()
-            
-            });
-        
-        
-            if(_fileMenuModel.IsFile)
-            {
+        var newfilemessagebox = 
+            MessageBoxManager.GetMessageBoxStandard("Title","Do you wish to save the current file before creating a new file?" ,ButtonEnum.YesNoCancel);
+        var result = await newfilemessagebox.ShowAsync();
 
-                if (file !=null)
-                {
-                   
-                    await using var stream = await file.OpenWriteAsync();
-                    using var  streamwriter = new StreamWriter(stream);
-                    await streamwriter.WriteLineAsync(_fileMenuModel.Content);
-                    
-                }
-          
-                
-                
-                
-                
-                
-            }
-            else
-            {
-                
-                
-                
-            }
-            
-        
-            
-          
-            
-            
-            
-    
-    }
-    
-    
-    [RelayCommand]
-    public async Task Saveas()
-    {
-                
-                
-                
-    }
-    
-    [RelayCommand]
-    public async Task Newwindow()
-    {
-        
-        
-    }
-    
-    [RelayCommand]
-    public async Task Print()
-    {
-    }
-    
-    [RelayCommand]
-    public async Task Exit()
-    {
-        var box = MessageBoxManager
-            .GetMessageBoxStandard("Title", "Do you wish to save File before Exiting", ButtonEnum.YesNoCancel);
-        
-        var result = await box.ShowAsync();
         switch (result)
         {
+            
             case ButtonResult.Yes:
                 await SaveFile();
+                cleardata();
                 break;
             case ButtonResult.No:
-                Environment.Exit(0);
+                cleardata();
                 break;
             case ButtonResult.Cancel:
                 break;
+            
+            
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }
-    
-    
-    [RelayCommand]
-    public async Task Undo()
-    {
         
         
     }
     
     
     [RelayCommand]
-    public async Task Cut()
+    private async Task NewWindow ()
     {
         
-        
+        var newwindw = new MainWindowView();
+        newwindw.Show();
         
     }
-    
     
     [RelayCommand]
-    public async Task Copy()
+    private async Task OpenFile ()
     {
-        
-        
-    }
-    
-    
-    
-    private bool _canPaste ()
-    {
-        
-        return false;
-    }
-    
-    
-    [RelayCommand]
-    public async Task Paste()
-    {
-        
-        
-    }
-    
-    private bool _canDelete ()
-    {
-        if(Content.Select(c => c).Count() > 0)
+      var openfilemessagebox = 
+          MessageBoxManager.GetMessageBoxStandard("Title","Do you wish to save before opening a new file?",ButtonEnum.YesNoCancel);
+      var result = await openfilemessagebox.ShowAsync();
+
+      switch (result)
       {
-          return true;
+          case ButtonResult.Yes:
+              await SaveFile();
+              cleardata();
+              NewFileCreated = true;
+              break;
+          case ButtonResult.No:
+              cleardata();
+              NewFileCreated = true;
+              break;
+          case ButtonResult.Cancel:
+              break;
       }
-
-        return false;
-
+        
+      
+      
+        var toplevel= TopLevel.GetTopLevel(_view);
+        var files = await toplevel.StorageProvider.OpenFilePickerAsync
+        (new FilePickerOpenOptions
+        {
+           Title = "Open file",
+           AllowMultiple = false,
+           SuggestedFileType = new FilePickerFileType("Text file"),
+            
+        });
+        
+            await using var stream = await files[0].OpenReadAsync();
+            using(StreamReader sr = new StreamReader(stream))
+            {
+                Content =  await sr.ReadToEndAsync();
+                
+            }
+            
+        
     }
+    
+    
+    
+    [RelayCommand]
+    private async Task SaveFile ()
+    {
+        
+        
+        
+    }
+    
+    
+    [RelayCommand]
+    private async Task SaveFileas ()
+    {
+        
+        
+    }
+    
+    
+    [RelayCommand]
+    private async Task Print ()
+    {
+        
+        
+    }
+    
+    [RelayCommand]
+    private async Task Exit()
+    {
+        
+    }
+    
+    #endregion
+    #region EditMenu
+    [RelayCommand]
+    private async Task Undo ()
+    {
+        
+        
+    }
+    
+    [RelayCommand]
+    private async Task Cut ()
+    {
+        
+        
+    }
+    
 
+    [RelayCommand]
+    private async Task Copy ()
+    {
+        
+        
+    }
+    
+    
+    [RelayCommand]
+    private async Task Paste ()
+    {
+        
+        
+    }
+    
+    [RelayCommand]
+    private async Task Delete ()
+    {
+        
+    }
+    
   
     
     
     
-    [RelayCommand(CanExecute = nameof(_canDelete))]
-    public async Task Delete()
-    {
-        
-        Content.Select(s => s).ToList().Clear();
-     
-        
-    }
+    #endregion
+
+    
+    
+    
+    #region MyRegion
+
+    
+
+    #endregion
     
     
     
@@ -310,3 +231,14 @@ public partial class FileMenuViewModel : ObservableObject
     
     
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

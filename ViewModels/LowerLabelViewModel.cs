@@ -7,16 +7,20 @@ namespace Notepad_V2.ViewModels;
 
 public partial class LowerLabelViewModel : ObservableObject
 {
-       public LowerLabelViewModel (LowerLabelsModel model, FileMenuModel fileMenumodel)
-       {
-
-       FileMenu = fileMenumodel;
-       Labels = model;
+   public LowerLabelsModel LowerLabelsModel {get;}
+   public FileModel FileModel {get;}
        
-}
+       
+       public LowerLabelViewModel (LowerLabelsModel model,FileModel file)
+       {
+           FileModel =  file;
+           LowerLabelsModel = model;
+           
+           
+       }
 
-LowerLabelsModel Labels { get;set;}
- FileMenuModel FileMenu { get;set;}
+    
+
 
 
 

@@ -21,7 +21,7 @@
        
    </Grid.RowDefinitions>   
     <Label Grid.Column="0" 
-           Content="test4"
+           Content="{Binding FileModel.Filepath}"
            x:Name="UpdateColRowLabel"
            HorizontalAlignment="Left" 
            HorizontalContentAlignment="Left"
@@ -34,18 +34,19 @@
        <Label Grid.Column="0" 
               
               x:Name="FilePathLabel"
-              Content="{Binding FileMenu.Filepath}"
+             Background="Red"
+              
               HorizontalAlignment="Center" 
               HorizontalContentAlignment="Center"
               VerticalAlignment="Bottom"
-              Margin="340,110,0,10"><!--Content="{Binding File.Filepath}"-->
+              Margin="340,110,0,10">
 
        </Label>
            
        <Label Grid.Column="1" 
               
               x:Name="FileNameLabel"
-              Content="{Binding }"
+              Content="{Binding FileModel.Filename }"
              HorizontalAlignment="Center" 
               VerticalAlignment="Bottom"
               Margin="0,10,0,0"
