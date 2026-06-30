@@ -209,25 +209,124 @@ public partial class FileMenuViewModel : ObservableObject
     {
         
     }
-    
-  
-    
-    
-    
+
+
+    [RelayCommand]
+    private async Task Find()
+    {
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task FindNext()
+    {
+        
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task Replace()
+    {
+        
+        
+    }
+
+
+    [RelayCommand]
+    public async Task GoTo()
+    {
+        
+                        
+    }
+
+    [RelayCommand]
+    public async Task SelectAll()
+    {
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task TimeDate()
+    {
+        
+        
+    }
     #endregion
 
     
     
     
-    #region MyRegion
+    #region FormateMenu
 
+
+    [RelayCommand]
+    public async Task WordWrap()
+    {
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task Font()
+    {
+        
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task BulletinList()
+    {
+        
+        
+    }
+
+    [RelayCommand]
+    public async Task NumberedList()
+    {
+        
+        
+    }
     
-
     #endregion
     
     
     
-    
+    #region ViewMenu
+
+    [RelayCommand]
+    public async Task ViewHelp()
+    {
+        
+        
+    }
+
+
+    [RelayCommand]
+    public async Task AboutNotepadV2()
+    {
+        var about = MessageBoxManager.GetMessageBoxStandard
+            ("NotepadV2", """
+                          NotepadV2 is a simple and lightweight text editor built with C# and Avalonia. 
+                          It provides a familiar editing experience with a modern, 
+                          cross-platform implementation inspired by Microsoft Notepad.   
+                          """, ButtonEnum.Ok);
+
+
+         await about.ShowAsync();
+    }
+
+    [RelayCommand]
+    public async Task LeaveAReview()
+    {
+        
+        
+    }
+
+    #endregion
     
     
     }

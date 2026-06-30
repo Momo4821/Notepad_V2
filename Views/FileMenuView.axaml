@@ -89,24 +89,32 @@
             <Separator />
 
             <MenuItem Header="Find..."
-                      x:Name="FindMenu" />
+                      x:Name="FindMenu" 
+                      Command="{Binding FindCommand}"
+                      />
 
             <MenuItem Header="Find Next"
-                      x:Name="FindNextMenu" />
+                      x:Name="FindNextMenu" 
+                      Command="{Binding FindNextCommand}"/>
 
             <MenuItem Header="Replace..."
-                      x:Name="ReplaceMenu" />
+                      x:Name="ReplaceMenu" 
+                      Command="{Binding ReplaceCommand}"/>
 
             <MenuItem Header="Go To..."
-                      x:Name="GoTomenuitem" />
+                      x:Name="GoTomenuitem"
+                      Command="{Binding GoToCommand}"/>
 
             <Separator />
 
             <MenuItem Header="Select All"
-                      x:Name="SelectAllmenuitem" />
+                      x:Name="SelectAllmenuitem"
+                      Command="{Binding SelectAllCommand}"
+                      />
 
             <MenuItem Header="Time/Date"
-                      x:Name="TimeDateMenuItem" />
+                      x:Name="TimeDateMenuItem" 
+                      Command="{Binding TimeDateCommand}"/>
         </MenuItem>
         
         
@@ -118,18 +126,22 @@
                   x:Name="FormatMenuitem">
 
             <MenuItem Header="Word Wrap"
-                      x:Name="WordWrapMenuItem" />
+                      x:Name="WordWrapMenuItem" 
+                      Command="{Binding WordWrapCommand}"/>
 
             <MenuItem Header="Font..."
-                      x:Name="FontMenuItem" />
+                      x:Name="FontMenuItem"
+                      Command="{Binding FontCommand}"/>
 
             <Separator />
 
             <MenuItem Header="Bulletin list"
-                      x:Name="BulletinListMenuItem" />
+                      x:Name="BulletinListMenuItem" 
+                      Command="{Binding BulletinListCommand}"/>
 
             <MenuItem Header="Numbered list"
-                      x:Name="NumberedListMenuItem" />
+                      x:Name="NumberedListMenuItem"
+                      Command="{Binding NumberedListCommand}"/>
         </MenuItem>
 
         <!-- View Menu -->
@@ -137,13 +149,17 @@
                   x:Name="ViewMenuItem">
 
             <MenuItem Header="View Help"
-                      x:Name="ViewHelpMenuItem" />
+                      x:Name="ViewHelpMenuItem"
+                      Command="{Binding ViewHelpCommand}"/>
 
             <MenuItem Header="About Notepad_V2"
-                      x:Name="AboutMenuItem" />
+                      x:Name="AboutMenuItem"
+                      Command="{Binding AboutNotepadV2Command}"
+                      />
 
             <MenuItem Header="Leave a Review"
-                      x:Name="ReviewMenuItem" />
+                      x:Name="ReviewMenuItem"
+                      Command="{Binding LeaveAReviewCommand}"/>
         </MenuItem>
 
     </Menu>
